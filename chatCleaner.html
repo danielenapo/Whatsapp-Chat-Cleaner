@@ -11,28 +11,27 @@
   <br>
   <textarea id="output"></textarea>
 
-
   <script>
     function clean(){
+      //declarations
       var chat=document.getElementById("input").value;
       message="";
       messages=[];
       j=0;
+      finalStr="";
+      cleanMessages=[];
+      //cleaning
       for(var i=0; i<chat.length; i++){
         message+=chat[i];
         if(chat.charCodeAt(i)==10){
           messages.push(message);
           message="";
+          cleanMessages.push(messages[messages.length-1].substr(18));
+          finalStr+=cleanMessages[cleanMessages.length-1];
         }
       }
 
-      finalStr="";
-      cleanMessages=[];
-      for(var i=0; i<messages.length; i++){
-        cleanMessages.push(messages[i].substr(18));
-        document.getElementById("output").innerHTML+=cleanMessages[i]+String.fromCharCode(10);
-        finalStr+=cleanMessages[i];
-      }
+      //output
       document.getElementById("output").value=finalStr;
   }
   </script>
