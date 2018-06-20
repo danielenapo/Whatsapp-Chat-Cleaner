@@ -1,0 +1,40 @@
+<html>
+<body>
+  <h1>Chat cleaner</h1>
+  paste original here:
+  <br>
+  <textarea id="input"></textarea>
+  <br><br>
+  <button id="submit" onClick="clean()">CLEAN DATA</button>
+  <br><br>
+  copy the final output:
+  <br>
+  <textarea id="output"></textarea>
+
+
+  <script>
+    function clean(){
+      var chat=document.getElementById("input").value;
+      message="";
+      messages=[];
+      j=0;
+      for(var i=0; i<chat.length; i++){
+        message+=chat[i];
+        if(chat.charCodeAt(i)==10){
+          messages.push(message);
+          message="";
+        }
+      }
+
+      finalStr="";
+      cleanMessages=[];
+      for(var i=0; i<messages.length; i++){
+        cleanMessages.push(messages[i].substr(18));
+        document.getElementById("output").innerHTML+=cleanMessages[i]+String.fromCharCode(10);
+        finalStr+=cleanMessages[i];
+      }
+      document.getElementById("output").value=finalStr;
+  }
+  </script>
+</body>
+</html>
