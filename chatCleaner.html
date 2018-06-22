@@ -25,7 +25,8 @@
       for(var i=0; i<chat.length; i++){
         message+=chat[i];
         if(chat.charCodeAt(i)==10){
-          messages.push(message);
+		  if(message.search("<media omessi>")!=-1)
+			messages.push(message);
           message="";
           cleanMessages.push(messages[messages.length-1].substr(18));
           finalStr+=cleanMessages[cleanMessages.length-1];
