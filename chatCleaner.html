@@ -1,41 +1,39 @@
 <html>
 <body>
-  <h1>Chat cleaner</h1>
-  paste original here:
-  <br>
-  <textarea id="input"></textarea>
-  <br><br>
-  <button id="submit" onClick="clean()">CLEAN DATA</button>
-  <br><br>
-  copy the final output:
-  <br>
-  <textarea id="output"></textarea>
+	<h1>Chat cleaner</h1>
+	paste original here:
+	<br>
+	<textarea id="input"></textarea>
+	<br><br>
+	<button id="submit" onClick="clean()">CLEAN DATA</button>
+	<br><br>
+	copy the final output:
+	<br>
+	<textarea id="output"></textarea>
 
-  <script>
-    function clean(){
-      //declarations
-      var chat=document.getElementById("input").value;
-	  chat=chat.toLowerCase();
-      message="";
-      messages=[];
-      j=0;
-      finalStr="";
-      cleanMessages=[];
-      //cleaning
-      for(var i=0; i<chat.length; i++){
-        message+=chat[i];
-        if(chat.charCodeAt(i)==10){
-		  if(message.search("<media omessi>")!=-1)
-			messages.push(message);
-          message="";
-          cleanMessages.push(messages[messages.length-1].substr(18));
-          finalStr+=cleanMessages[cleanMessages.length-1];
-        }
-      }
+	<script>
+		function clean(){
+			//declarations
+			var chat=document.getElementById("input").value;
+			chat=chat.toLowerCase();
+			message="";
+			finalStr="";
+			//cleaning
+			for(var i=0; i<chat.length; i++){
+				message+=chat[i];
+				if(chat.charCodeAt(i)==10){
+					if(message.search("<media omessi>")== -1){ //se va bene aggiunge
+						finalStr+=message.substr(18);
+						alert(message.substr(18));
+					}
+					message=""; //in ogni caso cancella
+				}
 
-      //output
-      document.getElementById("output").value=finalStr;
-  }
-  </script>
+			}
+			//output
+			document.getElementById("output").value=finalStr;
+		}
+	</script>
+	
 </body>
 </html>
