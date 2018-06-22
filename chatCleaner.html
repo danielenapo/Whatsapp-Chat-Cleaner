@@ -22,10 +22,8 @@
 			for(var i=0; i<chat.length; i++){
 				message+=chat[i];
 				if(chat.charCodeAt(i)==10){
-					if(message.search("<media omessi>")== -1){ //se va bene aggiunge
-						finalStr+=message.substr(18);
-						alert(message.substr(18));
-					}
+					if(message.search("<media omessi>")== -1 && message.search("https")== -1 && message.search(":")!= -1) //se va bene aggiunge
+						finalStr+=message.substr(18);				
 					message=""; //in ogni caso cancella
 				}
 
